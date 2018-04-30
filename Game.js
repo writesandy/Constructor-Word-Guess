@@ -1,5 +1,5 @@
 let Word = require("./Game.js");
-let inquirer = require("inquirer.js");
+let inquirer = require("inquirer");
 
 
 function Game () {
@@ -22,14 +22,11 @@ function Game () {
 
     this.userInput = function () {
         return inquirer.prompt ([
-
-        
         {
             type: 'input',
             name: 'letter',
             message: "Choose a letter",
             validate: function(val) {
-                
               return /[a-z1-9]/gi.test(val);
             }
         }

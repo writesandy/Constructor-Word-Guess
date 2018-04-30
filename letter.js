@@ -1,15 +1,22 @@
 
 
 
-function Letter () {
+function Letter (guessedLetter) {
     this.underscore = "__";
-    this.guess = guess;
-    this.guessedAlready = false;
-    this.guessChecker = function(guessedAlready) {
-        if (guessedAlready === true) {
-            // if letter has been guessed correctly then populate in string
+    this.guessedLetter = guessedLetter;
+    this.showLetter = false;
+    this.guessChecker = function(guessedLetter) {
+        if (this.correctLetters === letter) {
+            this.underscore = this.correctLetters;
+            return true;
         } else {
-            // if letter has not been correctly guessed then populate an underscore
+            return false;
         }
     }
+
+    this.guessedLetter = function () {
+        this.showLetter
+    }
 };
+
+module.exports = Letter;
