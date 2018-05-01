@@ -19,6 +19,7 @@ function Game () {
     //declare variables and functions to initialize game
 
     this.play = function () {
+        console.log("Guesses left: " +guesses);
         this.guessesLeft = 10;
         this.getWord();
     };
