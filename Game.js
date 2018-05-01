@@ -40,14 +40,32 @@ function Game () {
             name: 'letter',
             message: "Choose a letter",
             validate: function(val) {
-              return /[a-z1-9]/.test(val);
+            return /[a-z1-9]/.test(val);
             }
         }
     ]).then(function(val){
-        let guessedCorrectly = false;
+        let guessedCorrectly = this.currentWord.checkLetter(val.letter);
+        if (guessedCorrectly) {
+            this.currentWord.updateDisplayedWord(val.letter);
+            console.log('You guessed correctly!');
+        } else {
+            this.guessesLeft--;
+            console.log('You guessed incorrectly!');
+
+        }
+        
+        if(this.guessesLeft < 1) {
+            console.log('Game Over');
+            process.exit(0);
+        } else if (this.currentWord.checkForWin()) {
+            this.play();
+        }
+
     });
     
-}
+};
 
 }
+
+module.exports = Game;
 
